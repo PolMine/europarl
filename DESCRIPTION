@@ -1,0 +1,24 @@
+Package: europarl
+Type: Package
+Title: Europarl Corpus
+Version: 0.0.3
+Date: 2018-07-09
+Authors@R: c(person("Andreas Blaette", "Developer", role = c("aut", "cre"), email = "andreas.blaette@uni-due.de"))
+Imports:
+  cwbtools (>= 0.0.8.9003)
+Suggests:
+  knitr,
+  rmarkdown,
+LazyData: yes
+Description: The package offers minimal functionality to download a subset of the Europarl Corpus,
+  version 3, pre-indexed for the IMS Open Corpus Workbench (CWB). It is based on the POS-tagged,
+  lemmatised and sentence-aligned distribution offered by the OPUS project
+  (http://urd.let.rug.nl/tiedeman/OPUS/Europarl3.php) and includes the languages English, Dutch, 
+  French, German, Italian and Spanish. The six languages are available under the CWB names
+  EUROPARL-EN, EUROPARL-NL, EUROPARL-FR, EUROPARL-DE, EUROPARL-IT and EUROPARL-ES.
+License: CC BY-NC-SA 4.0
+VignetteBuilder: knitr
+Encoding: UTF-8
+Collate:
+  'europarl.R'
+RoxygenNote: 6.0.1
