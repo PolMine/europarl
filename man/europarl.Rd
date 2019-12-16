@@ -3,9 +3,12 @@
 \name{europarl}
 \alias{europarl}
 \alias{europarl_download}
-\title{Get Europarl}
+\title{Install Europarl Corpora}
 \usage{
-europarl_download()
+europarl_download(verbose = TRUE)
+}
+\arguments{
+\item{verbose}{A \code{logical} value, whether to output progress messages.}
 }
 \description{
 The European Parliament Proceedings Parallel Corpus 1996-2011, known as
