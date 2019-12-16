@@ -1,7 +1,7 @@
 #' Install Europarl Corpora
 #' 
 #' The European Parliament Proceedings Parallel Corpus 1996-2011, known as
-#' [Europarl](http://www.statmt.org/europarl/) is a classical resource in the
+#' \href{http://www.statmt.org/europarl/}{Europarl} is a classical resource in the
 #' CWB community for demonstration purposes. This package includes minimal
 #' functionality to download and install the corpus into the R package.
 #' @param verbose A \code{logical} value, whether to output progress messages.

@@ -12,7 +12,7 @@ europarl_download(verbose = TRUE)
 }
 \description{
 The European Parliament Proceedings Parallel Corpus 1996-2011, known as
-[Europarl](http://www.statmt.org/europarl/) is a classical resource in the
+\href{http://www.statmt.org/europarl/}{Europarl} is a classical resource in the
 CWB community for demonstration purposes. This package includes minimal
 functionality to download and install the corpus into the R package.
 }

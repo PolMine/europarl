@@ -1,5 +1,6 @@
 ---
 output: github_document
+bibliography: ./vignettes/literature.bib
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -8,13 +9,87 @@ output: github_document
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Travis-CI Build Status](https://api.travis-ci.org/PolMine/europarl.svg?branch=master)](https://travis-ci.org/PolMine/europarl)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/PolMine/europarl?branch=master&svg=true)](https://ci.appveyor.com/project/PolMine/europarl)
-[![codecov](https://codecov.io/gh/PolMine/europarl/branch/master/graph/badge.svg)](https://codecov.io/gh/PolMine/europarl/branch/master)
+
+
+## About the 'europarl' R package
+
+This is a R data package that includes minimal functionality to download a
+subset of the Europarl Corpus [@koehn2005epc], version 3, pre-indexed for the IMS Open Corpus
+Workbench [@EvertHardie2011]. It is based on the POS-tagged, lemmatised and sentence-aligned
+distribution offered by the [OPUS project](http://urd.let.rug.nl/tiedeman/OPUS/Europarl3.php) 
+and covers the languages
+English, Dutch, French, German, Italian and Spanish. The six corpora are
+available under the CWB names EUROPARL-EN, EUROPARL-NL, EUROPARL-FR,
+EUROPARL-DE, EUROPARL-IT and EUROPARL-ES.
 
 
 ## Installation
 
+The easiest way to install the *europarl* package is to install it from the
+[drat](https://cran.r-project.org/web/packages/drat/vignettes/DratFAQ.html)-repository
+of the [PolMine Project](http://www.polmine.de).
+
 ```{r, eval = FALSE}
-drat::addRepo("polmine")
-install.packages("europarl")
+install.packages("europarl", repos = "https://polmine.github.io/drat")
+```
+
+The package  includes only a simple installer function `europarl_download()`
+that will download the Europarl corpus from the default location (a server of the
+University of Erlangen).
+
+```{r download_corpus, eval = FALSE}
 europarl::europarl_download()
 ```
+
+Note that the tarball that is downloaded is larger than 2GB. A good internet
+connection and some patience will be an advantage. 
+
+The indexed corpus will be stored in a subdirectory of the package (./extdata/cwb/).
+
+
+## Usage
+
+The idea to use R packages for shipping corpora has been developed in the context
+of the PolMine Project [@blaette2018]. The most convenient way to use the data
+will be to use the [polmineR](https://CRAN.R-project.org/package=polmineR) package.
+To be able to access that data within the package, call the `use()`-function.
+
+```{r, eval = FALSE}
+if (!"polmineR" %in% rownames(installed.packages())) install.packages("polmineR")
+library(polmineR)
+use("europarl")
+```
+
+If the corpora have been downloaded, you should see something like this.
+
+```{r use_europarl,echo = FALSE}
+library(polmineR)
+use("europarl")
+```
+
+The polmineR package offers a basic vocabulary for corpus analysis (counting,
+keyword-in-context analysis, cooccurrences, keyword extraction etc.). To learn
+more about the polmineR package, consult the [package documentation](http://polmine.github.io/polmineR/). To get started, you might
+want to perform a simple counting operation, such as counting the number of
+occurrences of "European integration" using the syntax of the Corpus Query
+Processor (CQP).
+
+```{r}
+count("EUROPARL-EN", query = '"European" "Integration" %c', cqp = TRUE)
+```
+
+## Achknowledgements and Citation
+
+The effort necessary to write this package has been fairly limited. The original work
+has been done by Philipp Koehn (University of Edinburgh), see the [website of the OPUS project](http://opus.nlpl.eu/Europarl3.php), and the [Wikipedia entry on the Europarl Corpus](https://en.wikipedia.org/wiki/Europarl_Corpus).
+
+Following the advice on the [website of the OPUS project](http://opus.nlpl.eu/Europarl3.php),
+the paper "Parallel Data, Tools and Interfaces in OPUS" [@tiedemann2012] should be quoted 
+as a reference to the Europarl corpus.
+
+Last but not least, Stefan Evert's efforts to prepare and host the linguistically annotated
+version of Europarl as a CWB indexed corpus is gratefully acknowledged.
+
+
+## References
+
